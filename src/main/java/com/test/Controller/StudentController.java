@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.Collection;
 
 @RestController
@@ -14,6 +15,7 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Student> getAllStudents(){
         return studentService.getAllStudents();
@@ -24,8 +26,8 @@ public class StudentController {
         return studentService.getStudentById(id);
     }
 
-    @RequestMapping(value = "/id", method = RequestMethod.DELETE)
-    public void deleteStudentById(@PathVariable("/id") int id){
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void deleteStudentById(@PathVariable("id") int id){
         studentService.removeStudentById(id);
     }
 
